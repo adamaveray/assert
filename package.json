@@ -1,0 +1,33 @@
+{
+  "name": "@averay/assert",
+  "description": "A collection of runtime TypeScript assertion functions to ensure strict type safety without relying on TypeScript type assertion statements.",
+  "author": {
+    "name": "Adam Averay",
+    "url": "https://adamaveray.au"
+  },
+  "license": "MIT",
+  "version": "0.0.2",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./index.ts",
+    "./*": "./lib/*.ts",
+    "./dev": "./dev.ts",
+    "./dev/*": "./lib/dev/*.ts"
+  },
+  "scripts": {
+    "format": "bun x codeformat fix",
+    "lint": "bun x codeformat check",
+    "release": "bun --bun x bumpp && bun publish",
+    "prepare": "bun --bun x husky"
+  },
+  "peerDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@averay/codeformat": "^0.2.0",
+    "@types/bun": "latest",
+    "bumpp": "^10.1.1",
+    "husky": "^9.1.7"
+  }
+}
