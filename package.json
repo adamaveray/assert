@@ -17,7 +17,9 @@
   },
   "scripts": {
     "format": "bun x codeformat fix",
-    "lint": "bun x codeformat check",
+    "lint": "bun run lint:codeformat && bun run lint:typescript",
+    "lint:codeformat": "bun x codeformat check",
+    "lint:typescript": "bun --bun x tsc --noEmit",
     "release": "bun --bun x bumpp && bun publish",
     "prepare": "bun --bun x husky"
   },
