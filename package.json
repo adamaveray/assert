@@ -20,7 +20,7 @@
     "lint": "bun run lint:codeformat && bun run lint:typescript",
     "lint:codeformat": "bun x codeformat check",
     "lint:typescript": "bun --bun x tsc --noEmit",
-    "release": "bun --bun x bumpp && bun publish",
+    "release": "bun --bun x bumpp && bun publish --access public",
     "prepare": "bun --bun x husky"
   },
   "peerDependencies": {
