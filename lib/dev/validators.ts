@@ -32,11 +32,11 @@ export function asInstanceOf<TValue, TClass>(
   value: TValue,
   classType: Constructor<TClass>,
   message?: string,
-): Extract<TValue, TClass> {
+): TValue & TClass {
   if (process.env.NODE_ENV !== 'production') {
     assertInstanceOf(value, classType, message);
   }
-  return value as Extract<TValue, TClass>;
+  return value as TValue & TClass;
 }
 
 export function asString<T>(value: T, message?: string): T & string {

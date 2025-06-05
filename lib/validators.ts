@@ -29,9 +29,9 @@ export function asInstanceOf<TValue, TClass>(
   value: TValue,
   classType: Constructor<TClass>,
   message?: string,
-): Extract<TValue, TClass> {
+): TValue & TClass {
   assertInstanceOf(value, classType, message);
-  return value as Extract<TValue, TClass>;
+  return value;
 }
 
 export function asString<T>(value: T, message?: string): T & string {
