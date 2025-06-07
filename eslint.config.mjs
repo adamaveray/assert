@@ -12,6 +12,7 @@ export default [
     files: ['lib/**/*.ts'],
     languageOptions: { globals: { ...globals.browser, ...globals.es2025 } },
     rules: {
+      'no-extra-boolean-cast': 'off',
       '@typescript-eslint/no-unsafe-function-type': 'off',
       'import/prefer-default-export': 'off',
       'sonarjs/function-return-type': 'off',

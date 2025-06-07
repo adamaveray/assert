@@ -1,9 +1,10 @@
-import { type AnyFunction, type Constructor } from '../types.ts';
+import { type AnyFunction, type Constructor, type Falsy, type Truthy } from '../types.ts';
 
 import {
   assertArray,
   assertBigInt,
   assertBoolean,
+  assertFalsy,
   assertFunction,
   assertInstanceOf,
   assertNonNullable,
@@ -12,6 +13,7 @@ import {
   assertObject,
   assertString,
   assertSymbol,
+  assertTruthy,
   assertUndefined,
 } from './assertions.ts';
 
@@ -22,6 +24,16 @@ export function asNullable<T>(value: T, message?: string): T & (null | undefined
 
 export function asNonNullable<T>(value: T, message?: string): NonNullable<T> {
   assertNonNullable(value, message);
+  return value;
+}
+
+export function asTruthy<T>(value: T, message?: string): Truthy<T> {
+  assertTruthy(value, message);
+  return value;
+}
+
+export function asFalsy<T>(value: T, message?: string): T & Falsy {
+  assertFalsy(value, message);
   return value;
 }
 

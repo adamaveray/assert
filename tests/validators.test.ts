@@ -2,19 +2,23 @@ import { test, describe, expect } from 'bun:test';
 
 import AssertionError from '../lib/AssertionError.ts';
 import {
-  asNullable,
-  asNonNullable,
-  asInstanceOf,
-  asString,
-  asNumber,
-  asBoolean,
-  asSymbol,
-  asBigInt,
-  asObject,
-  asFunction,
-  asUndefined,
   asArray,
+  asBigInt,
+  asBoolean,
+  asFalsy,
+  asFunction,
+  asInstanceOf,
+  asNonNullable,
+  asNullable,
+  asNumber,
+  asObject,
+  asString,
+  asSymbol,
+  asTruthy,
+  asUndefined,
 } from '../lib/validators.ts';
+
+import { falsyValues, truthyValues, wrapForEach } from './utils.ts';
 
 describe('asNullable', () => {
   test.each([null, undefined])('should return the value when it is nullable', (value) => {
@@ -33,6 +37,26 @@ describe('asNonNullable', () => {
 
   test.each(['string', 0, false, {}])('should return the value when it is not nullable', (value) => {
     expect(asNonNullable(value)).toBe(value);
+  });
+});
+
+describe('asTruthy', () => {
+  test.each(wrapForEach(truthyValues))('should return the value when it is truthy', (value) => {
+    expect(asTruthy(value)).toBe(value);
+  });
+
+  test.each(wrapForEach(falsyValues))('should throw when value is falsy', (value) => {
+    expect(() => asTruthy(value)).toThrow(AssertionError);
+  });
+});
+
+describe('asFalsy', () => {
+  test.each(wrapForEach(falsyValues))('should return the value when it is falsy', (value) => {
+    expect(asFalsy(value) as unknown).toBe(value);
+  });
+
+  test.each(wrapForEach(truthyValues))('should throw when value is truthy', (value) => {
+    expect(() => asFalsy(value)).toThrow(AssertionError);
   });
 });
 

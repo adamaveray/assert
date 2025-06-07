@@ -1,9 +1,10 @@
-import { type AnyFunction, type Constructor } from '../../types.ts';
+import { type AnyFunction, type Constructor, type Falsy, type Truthy } from '../../types.ts';
 import {
   assert as innerAssert,
   assertArray as innerAssertArray,
   assertBigInt as innerAssertBigInt,
   assertBoolean as innerAssertBoolean,
+  assertFalsy as innerAssertFalsy,
   assertFunction as innerAssertFunction,
   assertInstanceOf as innerAssertInstanceOf,
   assertNonNullable as innerAssertNonNullable,
@@ -12,6 +13,7 @@ import {
   assertObject as innerAssertObject,
   assertString as innerAssertString,
   assertSymbol as innerAssertSymbol,
+  assertTruthy as innerAssertTruthy,
   assertUndefined as innerAssertUndefined,
 } from '../assertions.ts';
 
@@ -30,6 +32,18 @@ export function assertNullable(value: unknown, message?: string): asserts value 
 export function assertNonNullable(value: unknown, message?: string): asserts value is NonNullable<typeof value> {
   if (process.env.NODE_ENV !== 'production') {
     innerAssertNonNullable(value, message);
+  }
+}
+
+export function assertTruthy<T>(value: T, message?: string): asserts value is Truthy<T> {
+  if (process.env.NODE_ENV !== 'production') {
+    innerAssertTruthy(value, message);
+  }
+}
+
+export function assertFalsy(value: unknown, message?: string): asserts value is Falsy {
+  if (process.env.NODE_ENV !== 'production') {
+    innerAssertFalsy(value, message);
   }
 }
 

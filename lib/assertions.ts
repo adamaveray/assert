@@ -1,4 +1,4 @@
-import { type AnyFunction, type Constructor } from '../types.ts';
+import { type AnyFunction, type Constructor, type Falsy, type Truthy } from '../types.ts';
 
 import AssertionError from './AssertionError.ts';
 
@@ -14,6 +14,14 @@ export function assertNullable(value: unknown, message?: string): asserts value 
 
 export function assertNonNullable<T>(value: T, message?: string): asserts value is NonNullable<T> {
   assert(value != null, message);
+}
+
+export function assertTruthy<T>(value: T, message?: string): asserts value is Truthy<T> {
+  assert(Boolean(value), message);
+}
+
+export function assertFalsy(value: unknown, message?: string): asserts value is Falsy {
+  assert(!Boolean(value), message);
 }
 
 export function assertInstanceOf<T>(value: unknown, classType: Constructor<T>, message?: string): asserts value is T {

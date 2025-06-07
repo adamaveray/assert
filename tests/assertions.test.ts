@@ -3,19 +3,23 @@ import { test, describe, expect } from 'bun:test';
 import AssertionError from '../lib/AssertionError.ts';
 import {
   assert,
-  assertNullable,
-  assertNonNullable,
-  assertInstanceOf,
-  assertString,
-  assertNumber,
-  assertBoolean,
-  assertSymbol,
-  assertBigInt,
-  assertObject,
-  assertFunction,
-  assertUndefined,
   assertArray,
+  assertBigInt,
+  assertBoolean,
+  assertFalsy,
+  assertFunction,
+  assertInstanceOf,
+  assertNonNullable,
+  assertNullable,
+  assertNumber,
+  assertObject,
+  assertString,
+  assertSymbol,
+  assertTruthy,
+  assertUndefined,
 } from '../lib/assertions.ts';
+
+import { falsyValues, truthyValues, wrapForEach } from './utils.ts';
 
 describe('assert', () => {
   test('should not throw when value is true', () => {
@@ -63,6 +67,26 @@ describe('assertNonNullable', () => {
     expect(() => {
       assertNonNullable(value);
     }).not.toThrow();
+  });
+});
+
+describe('assertTruthy', () => {
+  test.each(wrapForEach(falsyValues))('should throw when value is falsy', (value) => {
+    expect(() => assertTruthy(value)).toThrow(AssertionError);
+  });
+
+  test.each(wrapForEach(truthyValues))('should throw when value is truthy', (value) => {
+    expect(() => assertTruthy(value)).not.toThrow();
+  });
+});
+
+describe('assertFalsy', () => {
+  test.each(wrapForEach(falsyValues))('should not throw when value is falsy', (value) => {
+    expect(() => assertFalsy(value)).not.toThrow();
+  });
+
+  test.each(wrapForEach(truthyValues))('should not throw when value is truthy', (value) => {
+    expect(() => assertFalsy(value)).toThrow(AssertionError);
   });
 });
 
