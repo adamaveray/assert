@@ -12,7 +12,7 @@ export function assertNullable(value: unknown, message?: string): asserts value 
   assert(value == null, message);
 }
 
-export function assertNonNullable(value: unknown, message?: string): asserts value is NonNullable<typeof value> {
+export function assertNonNullable<T>(value: T, message?: string): asserts value is NonNullable<T> {
   assert(value != null, message);
 }
 
