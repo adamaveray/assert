@@ -6,6 +6,7 @@ export default [
     rules: {
       '@typescript-eslint/naming-convention': 'off',
       'unicorn/no-useless-undefined': 'off',
+      'preserve-caught-error': 'off',
     },
   },
   {
