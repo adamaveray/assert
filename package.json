@@ -24,12 +24,12 @@
     "prepare": "bun --bun x husky"
   },
   "peerDependencies": {
-    "typescript": "^5.8.3"
+    "typescript": "^5.8 || ^6.0 || ^7.0"
   },
   "devDependencies": {
-    "@averay/codeformat": "^0.2.0",
+    "@averay/codeformat": "^0.2.30",
     "@types/bun": "latest",
-    "bumpp": "^10.1.1",
+    "bumpp": "^10.4.1",
     "husky": "^9.1.7"
   }
 }
