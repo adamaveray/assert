@@ -6,5 +6,5 @@ export type AnyFunction = (...args: unknown[]) => unknown;
  *
  * @see https://developer.mozilla.org/en-US/docs/Glossary/Falsy
  */
-export type Falsy = null | undefined | false | 0 | 0n | ''; // eslint-disable-line @typescript-eslint/no-magic-numbers -- Values direct from the spec.
+export type Falsy = null | undefined | false | 0 | 0n | '';
 export type Truthy<T> = Exclude<T, Falsy>;

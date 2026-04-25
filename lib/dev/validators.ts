@@ -1,4 +1,4 @@
-import { type AnyFunction, type Constructor, type Falsy, type Truthy } from '../../types.ts';
+import type { AnyFunction, Constructor, Falsy, Truthy } from '../../types.ts';
 import {
   assertArray,
   assertBigInt,

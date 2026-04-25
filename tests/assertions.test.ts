@@ -1,4 +1,4 @@
-import { test, describe, expect } from 'bun:test';
+import { describe, expect, test } from 'bun:test';
 
 import AssertionError from '../lib/AssertionError.ts';
 import {
@@ -164,7 +164,7 @@ describe('assertSymbol', () => {
 });
 
 describe('assertBigInt', () => {
-  test.each([BigInt(0), BigInt(123)])('should not throw when value is a bigint', (value) => {
+  test.each([0n, 123n])('should not throw when value is a bigint', (value) => {
     expect(() => {
       assertBigInt(value);
     }).not.toThrow();
