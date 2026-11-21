@@ -1,3 +1,7 @@
+**This repository has been migrated to Codeberg: [codeberg.org/adamaveray/assert](https://codeberg.org/adamaveray/assert)**
+
+---
+
 # @averay/assert
 
 A collection of runtime TypeScript assertion functions to ensure strict type safety without relying on TypeScript type assertion statements.
